@@ -21,7 +21,7 @@ public class College {
     @OneToMany(mappedBy = "college")
     private List<Student> studentList;
 
-    @OneToMany
+    @OneToMany(mappedBy = "college")
     private List<Review> reviewList;
 
     public College() {
