@@ -1,5 +1,6 @@
 package com.Dharaneesh.REST.API.College;
 
+import com.Dharaneesh.REST.API.Review.Review;
 import com.Dharaneesh.REST.API.Student.Student;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -20,6 +21,9 @@ public class College {
     @OneToMany(mappedBy = "college")
     private List<Student> studentList;
 
+    @OneToMany
+    private List<Review> reviewList;
+
     public College() {
     }
 
@@ -28,6 +32,14 @@ public class College {
         this.name = name;
         this.code = code;
         this.location = location;
+    }
+
+    public List<Review> getReviewList() {
+        return reviewList;
+    }
+
+    public void setReviewList(List<Review> reviewList) {
+        this.reviewList = reviewList;
     }
 
     public List<Student> getStudentList() {
