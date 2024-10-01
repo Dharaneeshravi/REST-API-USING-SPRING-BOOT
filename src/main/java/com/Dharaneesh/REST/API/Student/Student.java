@@ -1,9 +1,7 @@
 package com.Dharaneesh.REST.API.Student;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.Dharaneesh.REST.API.College.College;
+import jakarta.persistence.*;
 
 @Entity
 public class Student {
@@ -15,18 +13,28 @@ public class Student {
     private String department;
     private String email;
     private String address;
-    private Long collegeId;
+
+
+    @ManyToOne
+    private College college;
 
     public Student() {
     }
 
-    public Student(Long id, String name, String email, String department, String address, Long collegeId) {
+    public Student(Long id, String name, String email, String department, String address) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.department = department;
         this.address = address;
-        this.collegeId = collegeId;
+    }
+
+    public College getCollege() {
+        return college;
+    }
+
+    public void setCollege(College college) {
+        this.college = college;
     }
 
     public Long getId() {
@@ -69,11 +77,4 @@ public class Student {
         this.address = address;
     }
 
-    public Long getCollegeId() {
-        return collegeId;
-    }
-
-    public void setCollegeId(Long collegeId) {
-        this.collegeId = collegeId;
-    }
 }

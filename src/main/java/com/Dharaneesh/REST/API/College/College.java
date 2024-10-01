@@ -1,9 +1,10 @@
 package com.Dharaneesh.REST.API.College;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.Dharaneesh.REST.API.Student.Student;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class College {
@@ -15,6 +16,10 @@ public class College {
     private Long code;
     private String location;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "college")
+    private List<Student> studentList;
+
     public College() {
     }
 
@@ -23,6 +28,14 @@ public class College {
         this.name = name;
         this.code = code;
         this.location = location;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(List<Student> studentList) {
+        this.studentList = studentList;
     }
 
     public Long getId() {
